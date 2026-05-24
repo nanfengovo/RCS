@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../../modules/device/src/Device.EntityFrameworkCore/Device.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="../../modules/diagnostics/src/Diagnostics.EntityFrameworkCore/Diagnostics.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="../../modules/dispatch/src/Dispatch.EntityFrameworkCore/Dispatch.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="../../modules/wms/src/Wms.EntityFrameworkCore/Wms.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\RCS.Domain\RCS.Domain.csproj" />
   </ItemGroup>
 

@@ -1,18 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using RCS.Books;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
+using Wms.EntityFrameworkCore;
+using Dispatch.EntityFrameworkCore;
+using Device.EntityFrameworkCore;
+using Diagnostics.EntityFrameworkCore;
 
 namespace RCS.EntityFrameworkCore;
 
@@ -24,7 +26,6 @@ public class RCSDbContext :
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
-    public DbSet<Book> Books { get; set; }
 
     #region Entities from the modules
 
@@ -72,13 +73,11 @@ public class RCSDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureBlobStoring();
         
-        builder.Entity<Book>(b =>
-        {
-            b.ToTable(RCSConsts.DbTablePrefix + "Books",
-                RCSConsts.DbSchema);
-            b.ConfigureByConvention(); //auto configure for the base class props
-            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
-        });
+        builder.ConfigureWms();
+        builder.ConfigureDispatch();
+        builder.ConfigureDevice();
+        builder.ConfigureDiagnostics();
+        
         
         /* Configure your own tables/entities inside here */
 
