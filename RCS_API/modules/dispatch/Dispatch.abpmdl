@@ -1,0 +1,58 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Dispatch.Domain": {
+      "path": "src/Dispatch.Domain/Dispatch.Domain.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.Application.Contracts": {
+      "path": "src/Dispatch.Application.Contracts/Dispatch.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.Application": {
+      "path": "src/Dispatch.Application/Dispatch.Application.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.EntityFrameworkCore": {
+      "path": "src/Dispatch.EntityFrameworkCore/Dispatch.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.HttpApi": {
+      "path": "src/Dispatch.HttpApi/Dispatch.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.HttpApi.Client": {
+      "path": "src/Dispatch.HttpApi.Client/Dispatch.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.TestBase": {
+      "path": "test/Dispatch.TestBase/Dispatch.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Dispatch.EntityFrameworkCore.Tests": {
+      "path": "test/Dispatch.EntityFrameworkCore.Tests/Dispatch.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Dispatch.Domain.Tests": {
+      "path": "test/Dispatch.Domain.Tests/Dispatch.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Dispatch.Application.Tests": {
+      "path": "test/Dispatch.Application.Tests/Dispatch.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Dispatch.Domain.Shared": {
+      "path": "src/Dispatch.Domain.Shared/Dispatch.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Dispatch.Installer": {
+       "path": "src/Dispatch.Installer/Dispatch.Installer.abppkg",
+       "folder": "src"
+    }
+  }
+}

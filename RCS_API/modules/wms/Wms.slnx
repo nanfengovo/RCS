@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Folder Name="/src/">
+        <Project Path="src/Wms.Domain.Shared/Wms.Domain.Shared.csproj" />
+        <Project Path="src/Wms.Domain/Wms.Domain.csproj" />
+        <Project Path="src/Wms.Application.Contracts/Wms.Application.Contracts.csproj" />
+        <Project Path="src/Wms.Application/Wms.Application.csproj" />
+        <Project Path="src/Wms.EntityFrameworkCore/Wms.EntityFrameworkCore.csproj" />
+        <Project Path="src/Wms.HttpApi/Wms.HttpApi.csproj" />
+        <Project Path="src/Wms.HttpApi.Client/Wms.HttpApi.Client.csproj" />
+        <Project Path="src/Wms.Installer/Wms.Installer.csproj" />
+    </Folder>
+    
+    <Folder Name="/test/">
+        <Project Path="test/Wms.TestBase/Wms.TestBase.csproj" />
+        <Project Path="test/Wms.EntityFrameworkCore.Tests/Wms.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/Wms.Domain.Tests/Wms.Domain.Tests.csproj" />
+        <Project Path="test/Wms.Application.Tests/Wms.Application.Tests.csproj" />
+    </Folder>
+</Solution>

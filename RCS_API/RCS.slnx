@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+    <Folder Name="/src/">
+        <Project Path="src/RCS.Domain/RCS.Domain.csproj" />
+        <Project Path="src/RCS.Application/RCS.Application.csproj" />
+        <Project Path="src/RCS.EntityFrameworkCore/RCS.EntityFrameworkCore.csproj" />
+        <Project Path="src/RCS.Domain.Shared/RCS.Domain.Shared.csproj" />
+        <Project Path="src/RCS.Application.Contracts/RCS.Application.Contracts.csproj" />
+        <Project Path="src/RCS.HttpApi/RCS.HttpApi.csproj" />
+        <Project Path="src/RCS.HttpApi.Client/RCS.HttpApi.Client.csproj" />
+        <Project Path="src/RCS.HttpApi.Host/RCS.HttpApi.Host.csproj" />
+        <Project Path="src/RCS.DbMigrator/RCS.DbMigrator.csproj" />
+    </Folder>
+    <Folder Name="/test/">
+        <Project Path="test/RCS.Application.Tests/RCS.Application.Tests.csproj" />
+        <Project Path="test/RCS.EntityFrameworkCore.Tests/RCS.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/RCS.TestBase/RCS.TestBase.csproj" />
+        <Project Path="test/RCS.Domain.Tests/RCS.Domain.Tests.csproj" />
+        <Project Path="test/RCS.HttpApi.Client.ConsoleTestApp/RCS.HttpApi.Client.ConsoleTestApp.csproj" />
+    </Folder>
+</Solution>

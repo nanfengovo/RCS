@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Folder Name="/src/">
+        <Project Path="src/Diagnostics.Domain.Shared/Diagnostics.Domain.Shared.csproj" />
+        <Project Path="src/Diagnostics.Domain/Diagnostics.Domain.csproj" />
+        <Project Path="src/Diagnostics.Application.Contracts/Diagnostics.Application.Contracts.csproj" />
+        <Project Path="src/Diagnostics.Application/Diagnostics.Application.csproj" />
+        <Project Path="src/Diagnostics.EntityFrameworkCore/Diagnostics.EntityFrameworkCore.csproj" />
+        <Project Path="src/Diagnostics.HttpApi/Diagnostics.HttpApi.csproj" />
+        <Project Path="src/Diagnostics.HttpApi.Client/Diagnostics.HttpApi.Client.csproj" />
+        <Project Path="src/Diagnostics.Installer/Diagnostics.Installer.csproj" />
+    </Folder>
+    
+    <Folder Name="/test/">
+        <Project Path="test/Diagnostics.TestBase/Diagnostics.TestBase.csproj" />
+        <Project Path="test/Diagnostics.EntityFrameworkCore.Tests/Diagnostics.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/Diagnostics.Domain.Tests/Diagnostics.Domain.Tests.csproj" />
+        <Project Path="test/Diagnostics.Application.Tests/Diagnostics.Application.Tests.csproj" />
+    </Folder>
+</Solution>

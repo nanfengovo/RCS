@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Folder Name="/src/">
+        <Project Path="src/Dispatch.Domain.Shared/Dispatch.Domain.Shared.csproj" />
+        <Project Path="src/Dispatch.Domain/Dispatch.Domain.csproj" />
+        <Project Path="src/Dispatch.Application.Contracts/Dispatch.Application.Contracts.csproj" />
+        <Project Path="src/Dispatch.Application/Dispatch.Application.csproj" />
+        <Project Path="src/Dispatch.EntityFrameworkCore/Dispatch.EntityFrameworkCore.csproj" />
+        <Project Path="src/Dispatch.HttpApi/Dispatch.HttpApi.csproj" />
+        <Project Path="src/Dispatch.HttpApi.Client/Dispatch.HttpApi.Client.csproj" />
+        <Project Path="src/Dispatch.Installer/Dispatch.Installer.csproj" />
+    </Folder>
+    
+    <Folder Name="/test/">
+        <Project Path="test/Dispatch.TestBase/Dispatch.TestBase.csproj" />
+        <Project Path="test/Dispatch.EntityFrameworkCore.Tests/Dispatch.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/Dispatch.Domain.Tests/Dispatch.Domain.Tests.csproj" />
+        <Project Path="test/Dispatch.Application.Tests/Dispatch.Application.Tests.csproj" />
+    </Folder>
+</Solution>

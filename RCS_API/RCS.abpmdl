@@ -1,0 +1,104 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.BasicTheme": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    },
+    "Volo.Abp.Account": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "10.3.0",
+      "isInstalled": true,
+      "creationTime": "05/24/2026 07:22:19 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "RCS.Application": {
+      "path": "src/RCS.Application/RCS.Application.abppkg",
+      "folder": "src"
+    },
+    "RCS.Application.Tests": {
+      "path": "test/RCS.Application.Tests/RCS.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "RCS.Domain.Shared": {
+      "path": "src/RCS.Domain.Shared/RCS.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "RCS.Application.Contracts": {
+      "path": "src/RCS.Application.Contracts/RCS.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "RCS.HttpApi": {
+      "path": "src/RCS.HttpApi/RCS.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "RCS.HttpApi.Client": {
+      "path": "src/RCS.HttpApi.Client/RCS.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "RCS.EntityFrameworkCore.Tests": {
+      "path": "test/RCS.EntityFrameworkCore.Tests/RCS.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "RCS.EntityFrameworkCore": {
+      "path": "src/RCS.EntityFrameworkCore/RCS.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "RCS.TestBase": {
+      "path": "test/RCS.TestBase/RCS.TestBase.abppkg",
+      "folder": "test"
+    },
+    "RCS.Domain.Tests": {
+      "path": "test/RCS.Domain.Tests/RCS.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "RCS.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/RCS.HttpApi.Client.ConsoleTestApp/RCS.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "RCS.DbMigrator": {
+      "path": "src/RCS.DbMigrator/RCS.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "RCS.HttpApi.Host": {
+      "path": "src/RCS.HttpApi.Host/RCS.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "RCS.Domain": {
+      "path": "src/RCS.Domain/RCS.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

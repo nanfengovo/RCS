@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Folder Name="/src/">
+        <Project Path="src/Device.Domain.Shared/Device.Domain.Shared.csproj" />
+        <Project Path="src/Device.Domain/Device.Domain.csproj" />
+        <Project Path="src/Device.Application.Contracts/Device.Application.Contracts.csproj" />
+        <Project Path="src/Device.Application/Device.Application.csproj" />
+        <Project Path="src/Device.EntityFrameworkCore/Device.EntityFrameworkCore.csproj" />
+        <Project Path="src/Device.HttpApi/Device.HttpApi.csproj" />
+        <Project Path="src/Device.HttpApi.Client/Device.HttpApi.Client.csproj" />
+        <Project Path="src/Device.Installer/Device.Installer.csproj" />
+    </Folder>
+    
+    <Folder Name="/test/">
+        <Project Path="test/Device.TestBase/Device.TestBase.csproj" />
+        <Project Path="test/Device.EntityFrameworkCore.Tests/Device.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/Device.Domain.Tests/Device.Domain.Tests.csproj" />
+        <Project Path="test/Device.Application.Tests/Device.Application.Tests.csproj" />
+    </Folder>
+</Solution>

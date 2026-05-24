@@ -1,0 +1,58 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Diagnostics.Domain": {
+      "path": "src/Diagnostics.Domain/Diagnostics.Domain.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.Application.Contracts": {
+      "path": "src/Diagnostics.Application.Contracts/Diagnostics.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.Application": {
+      "path": "src/Diagnostics.Application/Diagnostics.Application.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.EntityFrameworkCore": {
+      "path": "src/Diagnostics.EntityFrameworkCore/Diagnostics.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.HttpApi": {
+      "path": "src/Diagnostics.HttpApi/Diagnostics.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.HttpApi.Client": {
+      "path": "src/Diagnostics.HttpApi.Client/Diagnostics.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.TestBase": {
+      "path": "test/Diagnostics.TestBase/Diagnostics.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Diagnostics.EntityFrameworkCore.Tests": {
+      "path": "test/Diagnostics.EntityFrameworkCore.Tests/Diagnostics.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Diagnostics.Domain.Tests": {
+      "path": "test/Diagnostics.Domain.Tests/Diagnostics.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Diagnostics.Application.Tests": {
+      "path": "test/Diagnostics.Application.Tests/Diagnostics.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Diagnostics.Domain.Shared": {
+      "path": "src/Diagnostics.Domain.Shared/Diagnostics.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Diagnostics.Installer": {
+       "path": "src/Diagnostics.Installer/Diagnostics.Installer.abppkg",
+       "folder": "src"
+    }
+  }
+}

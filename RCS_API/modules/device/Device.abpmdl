@@ -1,0 +1,58 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Device.Domain": {
+      "path": "src/Device.Domain/Device.Domain.abppkg",
+      "folder": "src"
+    },
+    "Device.Application.Contracts": {
+      "path": "src/Device.Application.Contracts/Device.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Device.Application": {
+      "path": "src/Device.Application/Device.Application.abppkg",
+      "folder": "src"
+    },
+    "Device.EntityFrameworkCore": {
+      "path": "src/Device.EntityFrameworkCore/Device.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Device.HttpApi": {
+      "path": "src/Device.HttpApi/Device.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Device.HttpApi.Client": {
+      "path": "src/Device.HttpApi.Client/Device.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Device.TestBase": {
+      "path": "test/Device.TestBase/Device.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Device.EntityFrameworkCore.Tests": {
+      "path": "test/Device.EntityFrameworkCore.Tests/Device.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Device.Domain.Tests": {
+      "path": "test/Device.Domain.Tests/Device.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Device.Application.Tests": {
+      "path": "test/Device.Application.Tests/Device.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Device.Domain.Shared": {
+      "path": "src/Device.Domain.Shared/Device.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Device.Installer": {
+       "path": "src/Device.Installer/Device.Installer.abppkg",
+       "folder": "src"
+    }
+  }
+}

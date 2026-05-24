@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Wms</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Mapperly" Version="10.3.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="10.3.0" />
+    <ProjectReference Include="..\Wms.Application.Contracts\Wms.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Wms.Domain\Wms.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,58 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Wms.Domain": {
+      "path": "src/Wms.Domain/Wms.Domain.abppkg",
+      "folder": "src"
+    },
+    "Wms.Application.Contracts": {
+      "path": "src/Wms.Application.Contracts/Wms.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Wms.Application": {
+      "path": "src/Wms.Application/Wms.Application.abppkg",
+      "folder": "src"
+    },
+    "Wms.EntityFrameworkCore": {
+      "path": "src/Wms.EntityFrameworkCore/Wms.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Wms.HttpApi": {
+      "path": "src/Wms.HttpApi/Wms.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Wms.HttpApi.Client": {
+      "path": "src/Wms.HttpApi.Client/Wms.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Wms.TestBase": {
+      "path": "test/Wms.TestBase/Wms.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Wms.EntityFrameworkCore.Tests": {
+      "path": "test/Wms.EntityFrameworkCore.Tests/Wms.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Wms.Domain.Tests": {
+      "path": "test/Wms.Domain.Tests/Wms.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Wms.Application.Tests": {
+      "path": "test/Wms.Application.Tests/Wms.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Wms.Domain.Shared": {
+      "path": "src/Wms.Domain.Shared/Wms.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Wms.Installer": {
+       "path": "src/Wms.Installer/Wms.Installer.abppkg",
+       "folder": "src"
+    }
+  }
+}
