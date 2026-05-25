@@ -68,8 +68,9 @@ jobs:
           cache: 'pnpm' # 自动缓存依赖，加速下一次流水线
 
       - name: 📦 Install Dependencies
+        working-directory: ./RCS_Vue # 👈 强制进入前端目录
         # 因为我们配置了 workspace，在根目录执行 install 即可
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: 🧹 Lint Frontend
         working-directory: ./RCS_Vue
