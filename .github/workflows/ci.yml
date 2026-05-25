@@ -1,0 +1,81 @@
+name: RCS CI Pipeline
+
+# 触发条件：推送到 main 分支，或者向 main 分支提交 PR 时触发
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # ==========================================
+  # 任务 1：后端 .NET 编译与测试
+  # ==========================================
+  build-backend:
+    name: 🏗️ Build & Test .NET Backend
+    runs-on: ubuntu-latest
+    # 路径过滤：只有当 RCS_API 目录下的文件变动时，才执行此任务
+    # paths:
+    #   - 'RCS_API/**'
+    
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x' # 完美匹配你本地的 net10.0
+
+      - name: 📦 Restore Dependencies
+        working-directory: ./RCS_API
+        run: dotnet restore
+
+      - name: 🔨 Build
+        working-directory: ./RCS_API
+        run: dotnet build --no-restore
+
+      - name: 🧪 Run Tests
+        working-directory: ./RCS_API
+        # 即使某一个测试失败，流水线也会标红并阻止合并
+        run: dotnet test --no-build --verbosity normal
+
+
+  # ==========================================
+  # 任务 2：前端 Vue 检查与构建
+  # ==========================================
+  build-frontend:
+    name: 🎨 Build & Lint Vue Frontend
+    runs-on: ubuntu-latest
+    # paths:
+    #   - 'RCS_Vue/**'
+    #   - 'package.json'
+    #   - 'pnpm-workspace.yaml'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 使用最新的 pnpm v9
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm' # 自动缓存依赖，加速下一次流水线
+
+      - name: 📦 Install Dependencies
+        # 因为我们配置了 workspace，在根目录执行 install 即可
+        run: pnpm install
+
+      - name: 🧹 Lint Frontend
+        working-directory: ./RCS_Vue
+        run: pnpm run lint
+
+      - name: 🔨 Typecheck & Build
+        working-directory: ./RCS_Vue
+        # 确保在云端能成功打包为静态文件
+        run: pnpm run build
