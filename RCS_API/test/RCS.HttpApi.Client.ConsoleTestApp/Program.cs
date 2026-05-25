@@ -12,11 +12,11 @@ class Program
     {
         using (var application = await AbpApplicationFactory.CreateAsync<RCSConsoleApiClientModule>(options =>
         {
-           var builder = new ConfigurationBuilder();
-           builder.AddJsonFile("appsettings.json", false);
-           builder.AddJsonFile("appsettings.secrets.json", true);
-           options.Services.ReplaceConfiguration(builder.Build());
-           options.UseAutofac();
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", false);
+            builder.AddJsonFile("appsettings.secrets.json", true);
+            options.Services.ReplaceConfiguration(builder.Build());
+            options.UseAutofac();
         }))
         {
             await application.InitializeAsync();

@@ -48,13 +48,13 @@ public class RCSDomainSharedModule : AbpModule
                 .AddVirtualJson("/Localization/RCS");
 
             options.DefaultResourceType = typeof(RCSResource);
-            
-            options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "Chinese (Simplified)")); 
-            options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "Chinese (Traditional)")); 
-            options.Languages.Add(new LanguageInfo("en", "en", "English")); 
+
+            options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "Chinese (Simplified)"));
+            options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "Chinese (Traditional)"));
+            options.Languages.Add(new LanguageInfo("en", "en", "English"));
 
         });
-        
+
         Configure<AbpExceptionLocalizationOptions>(options =>
         {
             options.MapCodeNamespace("RCS", typeof(RCSResource));

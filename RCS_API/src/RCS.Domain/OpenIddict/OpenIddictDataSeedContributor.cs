@@ -36,10 +36,10 @@ public class OpenIddictDataSeedContributor : OpenIddictDataSeedContributorBase, 
 
     private async Task CreateScopesAsync()
     {
-        await CreateScopesAsync(new OpenIddictScopeDescriptor 
+        await CreateScopesAsync(new OpenIddictScopeDescriptor
         {
-            Name = "RCS", 
-            DisplayName = "RCS API", 
+            Name = "RCS",
+            DisplayName = "RCS API",
             Resources = { "RCS" }
         });
     }
@@ -59,7 +59,7 @@ public class OpenIddictDataSeedContributor : OpenIddictDataSeedContributorBase, 
 
 
         // Console Test / Angular Client
-        
+
         var appClientId = configurationSection["RCS_App:ClientId"];
         if (!appClientId.IsNullOrWhiteSpace())
         {
@@ -87,8 +87,8 @@ public class OpenIddictDataSeedContributor : OpenIddictDataSeedContributorBase, 
             );
         }
 
-        
-        
+
+
 
 
 

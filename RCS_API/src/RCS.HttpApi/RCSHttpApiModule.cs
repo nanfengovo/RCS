@@ -10,14 +10,14 @@ using Volo.Abp.Localization;
 
 namespace RCS;
 
- [DependsOn(
-    typeof(RCSApplicationContractsModule),
-    typeof(AbpPermissionManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule),
-    typeof(AbpAccountHttpApiModule),
-    typeof(AbpIdentityHttpApiModule),
-    typeof(AbpFeatureManagementHttpApiModule)
-    )]
+[DependsOn(
+   typeof(RCSApplicationContractsModule),
+   typeof(AbpPermissionManagementHttpApiModule),
+   typeof(AbpSettingManagementHttpApiModule),
+   typeof(AbpAccountHttpApiModule),
+   typeof(AbpIdentityHttpApiModule),
+   typeof(AbpFeatureManagementHttpApiModule)
+   )]
 public class RCSHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)

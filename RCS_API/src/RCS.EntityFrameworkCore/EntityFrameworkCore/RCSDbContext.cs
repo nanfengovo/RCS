@@ -72,13 +72,13 @@ public class RCSDbContext :
         builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureBlobStoring();
-        
+
         builder.ConfigureWms();
         builder.ConfigureDispatch();
         builder.ConfigureDevice();
         builder.ConfigureDiagnostics();
-        
-        
+
+
         /* Configure your own tables/entities inside here */
 
         //builder.Entity<YourEntity>(b =>

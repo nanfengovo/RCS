@@ -15,7 +15,7 @@ public class WmsEntityFrameworkCoreModule : AbpModule
         context.Services.AddAbpDbContext<WmsDbContext>(options =>
         {
             options.AddDefaultRepositories<IWmsDbContext>(includeAllEntities: true);
-            
+
             /* Add custom repositories here. Example:
             * options.AddRepository<Question, EfCoreQuestionRepository>();
             */

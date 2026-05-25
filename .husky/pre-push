@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 触发 Pre-push 终极防线 (可能需要十几秒)..."
+
+# ==========================================
+# 1. 前端：严格 TypeScript 类型检查
+# ==========================================
+echo "👉 [1/2] 正在执行 Vue TypeScript 类型推导检查..."
+cd RCS_Vue
+pnpm run typecheck
+if [ $? -ne 0 ]; then
+  echo "❌ 前端 TypeScript 类型检查失败，Push 被拦截！"
+  exit 1
+fi
+cd ..
+
+# ==========================================
+# 2. 后端：无状态编译检查
+# ==========================================
+echo "👉 [2/2] 正在尝试编译 .NET 后端..."
+cd RCS_API
+dotnet build --no-restore
+if [ $? -ne 0 ]; then
+  echo "❌ 后端编译失败，Push 被拦截！"
+  exit 1
+fi
+cd ..
+
+echo "✅ 编译与类型检查全部通过，开始推送到 GitHub！"

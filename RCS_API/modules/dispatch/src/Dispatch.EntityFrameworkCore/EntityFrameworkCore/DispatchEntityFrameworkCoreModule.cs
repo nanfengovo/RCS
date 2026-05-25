@@ -15,7 +15,7 @@ public class DispatchEntityFrameworkCoreModule : AbpModule
         context.Services.AddAbpDbContext<DispatchDbContext>(options =>
         {
             options.AddDefaultRepositories<IDispatchDbContext>(includeAllEntities: true);
-            
+
             /* Add custom repositories here. Example:
             * options.AddRepository<Question, EfCoreQuestionRepository>();
             */

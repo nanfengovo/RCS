@@ -1,0 +1,39 @@
+echo "🛡️  触发 Pre-commit 检查..."
+
+echo "👉 [1/2] 正在检查前端 (Vue) 代码规范..."
+cd RCS_Vue || { echo "❌ 找不到 RCS_Vue 目录"; exit 1; }
+
+# 【自诊断防线】检查前端 package.json 是否在正确的位置
+if [ ! -f "package.json" ]; then
+  echo "❌ 致命错误：在 RCS_Vue 目录下找不到 package.json！"
+  echo "💡 诊断结果：你的前端代码很可能多嵌套了一层文件夹，或者没有正确放进来。"
+  echo "📂 现将 RCS_Vue 目录下的实际内容打印如下，请排查："
+  ls -la
+  exit 1
+fi
+
+# 智能识别并执行 Lint
+if grep -q "nano-staged" package.json; then
+  pnpm exec nano-staged
+elif grep -q "lint-staged" package.json; then
+  pnpm exec lint-staged
+else
+  pnpm run lint
+fi
+
+if [ $? -ne 0 ]; then
+  echo "❌ 前端代码不符合规范，Commit 被拦截！请修复上面的红字错误。"
+  exit 1
+fi
+cd ..
+
+echo "👉 [2/2] 正在检查后端 (.NET) 代码格式..."
+cd RCS_API || { echo "❌ 找不到 RCS_API 目录"; exit 1; }
+dotnet format whitespace --verify-no-changes
+if [ $? -ne 0 ]; then
+  echo "❌ 后端代码格式不规范，Commit 被拦截！可以手动运行 'dotnet format' 自动修复。"
+  exit 1
+fi
+cd ..
+
+echo "✅ 所有检查通过，允许 Commit！"
