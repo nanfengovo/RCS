@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -19,12 +16,10 @@ using RCS.HealthChecks;
 using Microsoft.OpenApi;
 using Volo.Abp;
 using Volo.Abp.Studio;
-using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
@@ -34,7 +29,6 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Microsoft.AspNetCore.Hosting;
 using Volo.Abp.AspNetCore.Serilog;
-using Volo.Abp.Identity;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.Studio.Client.AspNetCore;
@@ -220,7 +214,13 @@ public class RCSHttpApiHostModule : AbpModule
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "RCS API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
-                options.CustomSchemaIds(type => type.FullName);
+                // 👇 核心修复代码：强行拦截并正则替换不合法字符
+                options.CustomSchemaIds(type =>
+                {
+                    var name = type.FullName ?? type.Name;
+                    // 用下划线替换掉所有不符合 OpenAPI 规范的字符（如反引号、中括号、逗号、空格）
+                    return System.Text.RegularExpressions.Regex.Replace(name, @"[^a-zA-Z0-9\.\-_]", "_");
+                });
             });
     }
 

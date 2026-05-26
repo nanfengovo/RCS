@@ -41,7 +41,8 @@
     "preview": "vite preview",
     "release": "sa release",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
-    "update-pkg": "sa update-pkg"
+    "update-pkg": "sa update-pkg",
+    "api:gen": "NODE_TLS_REJECT_UNAUTHORIZED=0 orval"
   },
   "dependencies": {
     "@better-scroll/core": "2.5.1",
@@ -79,6 +80,7 @@
     "consola": "3.4.2",
     "eslint": "10.3.0",
     "kolorist": "1.8.0",
+    "orval": "^8.12.3",
     "oxfmt": "^0.49.0",
     "oxlint": "^1.64.0",
     "sass": "1.99.0",
