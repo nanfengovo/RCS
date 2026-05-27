@@ -7,7 +7,7 @@ namespace Wms.Locations.Dtos
     {
         [Required]
         [MaxLength(64)]
-        public string LocationCode { get; set;} = default!;
+        public string LocationCode { get; set; } = default!;
 
         public LocationType LocationType { get; set; }
 

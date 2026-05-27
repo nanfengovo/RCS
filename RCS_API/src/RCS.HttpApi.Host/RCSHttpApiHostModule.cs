@@ -224,11 +224,11 @@ public class RCSHttpApiHostModule : AbpModule
                 // ==========================================
                 // 1. 以后加新模块，只需要在这个数组里加名字！
                 // ==========================================
-                var customModules = new[] { "wms", "dispatch", "device" }; 
+                var customModules = new[] { "wms", "dispatch", "device" };
 
                 // 注册主文档
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "RCS Main API", Version = "v1" });
-                
+
                 // 循环注册所有子模块文档
                 foreach (var module in customModules)
                 {
@@ -241,19 +241,19 @@ public class RCSHttpApiHostModule : AbpModule
                 options.DocInclusionPredicate((docName, description) =>
                 {
                     // 判断当前接口是否被显式打上了某个模块的标签，或者路由里包含了 /api/模块名/
-                    var matchedModule = customModules.FirstOrDefault(m => 
-                        description.GroupName == m || 
+                    var matchedModule = customModules.FirstOrDefault(m =>
+                        description.GroupName == m ||
                         (description.RelativePath != null && description.RelativePath.Contains($"api/{m}")));
 
                     if (docName == "v1")
                     {
                         // 如果生成 v1 (Main API)，只收【不属于任何自定义模块】的基础接口
-                        return matchedModule == null; 
+                        return matchedModule == null;
                     }
                     else
                     {
                         // 如果生成子模块文档，只收对应模块的接口
-                        return matchedModule == docName; 
+                        return matchedModule == docName;
                     }
                 });
 

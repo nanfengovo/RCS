@@ -9,7 +9,7 @@ namespace Wms.LocationDomainService
 {
     public class LocationManager : DomainService
     {
-        private readonly IRepository<Location,Guid> _locationRepository;
+        private readonly IRepository<Location, Guid> _locationRepository;
 
         public LocationManager(IRepository<Location, Guid> locationRepository)
         {
@@ -21,11 +21,11 @@ namespace Wms.LocationDomainService
             //检查 locationCode 是否唯一
             var existingLocation = await _locationRepository.FirstOrDefaultAsync(x => x.LocationCode == locationCode);
             if (existingLocation != null)
-             {
+            {
                 throw new BusinessException(WmsErrorCodes.LocationCodeAlreadyExists)
                     .WithData("LocationCode", locationCode)
-                    .WithData("ExistingLocationId", existingLocation.Id);   
-             }
+                    .WithData("ExistingLocationId", existingLocation.Id);
+            }
 
             // 组装值对象
             var coordinate = new LocationCoordinate(row, column, layer);

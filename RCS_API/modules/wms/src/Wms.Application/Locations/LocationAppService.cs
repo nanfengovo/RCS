@@ -32,7 +32,7 @@ namespace Wms.Localization
 
         public async Task BatchChangeActiveStatusAsync(BatchChangeLocationActiveDto dto, bool isActive)
         {
-            if(dto.LocationIds == null || !dto.LocationIds.Any())
+            if (dto.LocationIds == null || !dto.LocationIds.Any())
             {
                 // 使用本地化器翻译错误信息，并抛出用户友好异常
                 throw new UserFriendlyException(_localizer["Wms:EmptyLocationIdList"]);
@@ -42,19 +42,19 @@ namespace Wms.Localization
             var uniqueIds = dto.LocationIds.Distinct().ToList();
             var locations = await _locationRepository.GetListAsync(x => uniqueIds.Contains(x.Id));
             // 一个都没有
-            if(locations.Count == 0)
+            if (locations.Count == 0)
             {
                 throw new UserFriendlyException(_localizer["Wms:NotFoundAnyLocations"]);
             }
 
-            if(locations.Count != uniqueIds.Count)
+            if (locations.Count != uniqueIds.Count)
             {
                 var foundIds = locations.Select(x => x.Id).ToHashSet();
                 var notFoundIds = uniqueIds.Where(id => !foundIds.Contains(id));
                 throw new UserFriendlyException(_localizer["Wms:SomeLocationsNotFound", string.Join(", ", notFoundIds)]);
             }
-            
-            foreach(var location in locations)
+
+            foreach (var location in locations)
             {
                 location.ChangeLocationAble(dto.IsActive);
             }
@@ -64,7 +64,7 @@ namespace Wms.Localization
         public async Task<LocationDto> CreateAsync(CreateLocationDto input)
         {
             //调用领域服务创建实体
-            var location  = await _locationManager.CreateLocationAsync(input.LocationCode, input.LocationType, input.ZoneId, input.Row, input.Column, input.Layer);
+            var location = await _locationManager.CreateLocationAsync(input.LocationCode, input.LocationType, input.ZoneId, input.Row, input.Column, input.Layer);
 
             //保存到数据库
             await _locationRepository.InsertAsync(location);
@@ -80,14 +80,14 @@ namespace Wms.Localization
             var totalCount = await AsyncExecuter.CountAsync(query);
 
             var queryResult = query
-                .OrderBy(x => x.LocationCode) 
+                .OrderBy(x => x.LocationCode)
                 .Skip(input.SkipCount)
                 .Take(input.MaxResultCount);
 
             var locations = await AsyncExecuter.ToListAsync(queryResult);
 
             var dtos = ObjectMapper.Map<List<Location>, List<LocationDto>>(locations);
-    
+
             return new PagedResultDto<LocationDto>(totalCount, dtos);
         }
     }

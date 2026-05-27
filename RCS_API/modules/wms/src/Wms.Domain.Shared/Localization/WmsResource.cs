@@ -5,5 +5,5 @@ namespace Wms.Localization;
 [LocalizationResourceName("Wms")]
 public class WmsResource
 {
-    
+
 }

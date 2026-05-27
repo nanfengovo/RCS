@@ -131,7 +131,7 @@ namespace Wms.Locations
         /// </summary>
         public void ChangeLocationAble(bool active)
         {
-            if(!active && LocationStatus != LocationStatus.Empty)
+            if (!active && LocationStatus != LocationStatus.Empty)
             {
                 throw new BusinessException(WmsErrorCodes.CannotDisableOccupiedLocation)
                 .WithData("LocationCode", LocationCode)
