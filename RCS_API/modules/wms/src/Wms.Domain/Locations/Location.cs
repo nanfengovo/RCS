@@ -99,14 +99,13 @@ namespace Wms.Locations
         /// <param name="taskId"></param>
         public void LockForInbound(Guid taskId)
         {
-            this.LockingTaskId = taskId;
             if (LocationStatus != LocationStatus.Empty || !IsActive)
             {
                 throw new BusinessException(WmsErrorCodes.LocationNotAvailableForInbound)
                 .WithData("LocationCode", LocationCode)
                 .WithData("currentStatus", LocationStatus);
             }
-
+            this.LockingTaskId = taskId;
             LocationStatus = LocationStatus.InboundLocked;
         }
 
@@ -123,6 +122,7 @@ namespace Wms.Locations
                 .WithData("currentStatus", LocationStatus);
             }
             this.CarrierId = carrierId;
+            this.LockingTaskId = null;
             LocationStatus = LocationStatus.Occupied;
         }
     }
