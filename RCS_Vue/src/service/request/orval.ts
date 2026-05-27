@@ -1,12 +1,6 @@
 import type { CustomAxiosRequestConfig } from '@sa/axios';
-import { request as baseRequest } from './index';
+import { request as baseRequest } from './abp';
 
 export async function request<T>(config: CustomAxiosRequestConfig): Promise<T> {
-  const { data, error } = await baseRequest<T>(config);
-
-  if (error) {
-    throw error;
-  }
-
-  return data as T;
+  return baseRequest<T>(config);
 }

@@ -25,7 +25,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     userId: '',
     userName: '',
     roles: [],
-    buttons: []
+    policies: {}
   });
 
   /** is super role in static route */
@@ -130,14 +130,18 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
   async function loginByToken(loginToken: Api.Auth.LoginToken) {
     // 1. stored in the localStorage, the later requests need it in headers
-    localStg.set('token', loginToken.token);
-    localStg.set('refreshToken', loginToken.refreshToken);
+    localStg.set('token', loginToken.access_token);
+    localStg.set('refreshToken', loginToken.refresh_token);
+
+    if (loginToken.expires_in) {
+      localStg.set('tokenExpiresAt', Date.now() + loginToken.expires_in * 1000);
+    }
 
     // 2. get user info
     const pass = await getUserInfo();
 
     if (pass) {
-      token.value = loginToken.token;
+      token.value = loginToken.access_token;
 
       return true;
     }
@@ -146,11 +150,18 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   }
 
   async function getUserInfo() {
-    const { data: info, error } = await fetchGetUserInfo();
+    const { data: applicationConfiguration, error } = await fetchGetUserInfo();
 
     if (!error) {
+      const currentUser = applicationConfiguration.currentUser;
+
       // update store
-      Object.assign(userInfo, info);
+      Object.assign(userInfo, {
+        userId: currentUser.id || '',
+        userName: currentUser.userName || '',
+        roles: currentUser.roles || [],
+        policies: applicationConfiguration.auth?.grantedPolicies || {}
+      });
 
       return true;
     }
@@ -179,6 +190,19 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     loginLoading,
     resetStore,
     login,
-    initUserInfo
+    initUserInfo,
+    hasPolicy
   };
+
+  function hasPolicy(policy: string | string[]) {
+    if (!isLogin.value) {
+      return false;
+    }
+
+    if (typeof policy === 'string') {
+      return Boolean(userInfo.policies[policy]);
+    }
+
+    return policy.some(item => userInfo.policies[item]);
+  }
 });

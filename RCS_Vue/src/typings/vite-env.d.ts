@@ -28,6 +28,10 @@ declare namespace Env {
     readonly VITE_ICON_LOCAL_PREFIX: 'icon-local';
     /** backend service base url */
     readonly VITE_SERVICE_BASE_URL: string;
+    /** ABP OpenIddict public client id */
+    readonly VITE_ABP_CLIENT_ID: string;
+    /** ABP OpenIddict requested scopes */
+    readonly VITE_ABP_SCOPE: string;
     /**
      * success code of backend service
      *
