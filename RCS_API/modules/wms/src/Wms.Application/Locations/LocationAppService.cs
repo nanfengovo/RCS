@@ -30,7 +30,7 @@ namespace Wms.Localization
             _localizer = localizer;
         }
 
-        public async Task BatchChangeActiveStatusAsync(BatchChangeLocationActiveDto dto, bool isActive)
+        public async Task BatchChangeActiveStatusAsync(BatchChangeLocationActiveDto dto)
         {
             if (dto.LocationIds == null || !dto.LocationIds.Any())
             {

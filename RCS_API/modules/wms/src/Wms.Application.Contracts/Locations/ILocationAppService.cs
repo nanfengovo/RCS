@@ -11,6 +11,6 @@ namespace Wms.Locations
 
         Task<LocationDto> CreateAsync(CreateLocationDto input);
 
-        Task BatchChangeActiveStatusAsync(BatchChangeLocationActiveDto dto, bool isActive);
+        Task BatchChangeActiveStatusAsync(BatchChangeLocationActiveDto dto);
     }
 }
