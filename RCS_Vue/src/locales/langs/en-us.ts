@@ -229,7 +229,10 @@ const local: App.I18n.Schema = {
     404: 'Page Not Found',
     500: 'Server Error',
     'iframe-page': 'Iframe',
-    home: 'Home'
+    home: 'Home',
+    overallauth: 'Access Control',
+    overallauth_role: 'Role Management',
+    overallauth_user: 'User Management'
   },
   page: {
     login: {

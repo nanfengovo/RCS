@@ -14,6 +14,43 @@ export function filterAuthRoutesByRoles(routes: ElegantConstRoute[], roles: stri
 }
 
 /**
+ * Filter auth routes by permissions
+ *
+ * @param routes Auth routes
+ * @param permissions User permissions
+ */
+export function filterAuthRoutesByPermissions(routes: ElegantConstRoute[], permissions: string[]) {
+  return routes.flatMap(route => filterAuthRouteByPermissions(route, permissions));
+}
+
+/**
+ * Filter auth route by permissions
+ *
+ * @param route Auth route
+ * @param permissions User permissions
+ */
+function filterAuthRouteByPermissions(route: ElegantConstRoute, permissions: string[]): ElegantConstRoute[] {
+  const routePermissions = route.meta?.permissions || [];
+
+  const isEmptyPermissions = !routePermissions.length;
+  const hasPermission = routePermissions.some(requiredPermission =>
+    permissions.some(permission => permission.startsWith(requiredPermission))
+  );
+
+  const filterRoute = { ...route };
+
+  if (filterRoute.children?.length) {
+    filterRoute.children = filterRoute.children.flatMap(item => filterAuthRouteByPermissions(item, permissions));
+  }
+
+  if (filterRoute.children?.length === 0 && route.children?.length) {
+    return [];
+  }
+
+  return hasPermission || isEmptyPermissions ? [filterRoute] : [];
+}
+
+/**
  * Filter auth route by roles
  *
  * @param route Auth route

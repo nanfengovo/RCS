@@ -74,5 +74,42 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
+  },
+  {
+    name: 'overallauth',
+    path: '/overallauth',
+    component: 'layout.base',
+    meta: {
+      title: 'overallauth',
+      i18nKey: 'route.overallauth',
+      icon: 'carbon:cloud-service-management',
+      order: 99
+    },
+    children: [
+      {
+        name: 'overallauth_role',
+        path: '/overallauth/role',
+        component: 'view.overallauth_role',
+        meta: {
+          title: 'overallauth_role',
+          i18nKey: 'route.overallauth_role',
+          icon: 'carbon:user-role',
+          order: 2,
+          permissions: ['AbpIdentity.Roles']
+        }
+      },
+      {
+        name: 'overallauth_user',
+        path: '/overallauth/user',
+        component: 'view.overallauth_user',
+        meta: {
+          title: 'overallauth_user',
+          i18nKey: 'route.overallauth_user',
+          icon: 'ic:round-manage-accounts',
+          order: 1,
+          permissions: ['AbpIdentity.Users']
+        }
+      }
+    ]
   }
 ];

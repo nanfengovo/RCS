@@ -17,6 +17,7 @@ declare namespace Api {
       userId: string;
       userName: string;
       roles: string[];
+      permissions: string[];
       policies: Record<string, boolean>;
     }
   }

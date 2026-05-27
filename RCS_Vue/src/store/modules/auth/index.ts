@@ -19,14 +19,17 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const { toLogin, redirectFromLogin } = useRouterPush(false);
   const { loading: loginLoading, startLoading, endLoading } = useLoading();
 
-  const token = ref('');
+  const token = ref(getToken());
 
   const userInfo: Api.Auth.UserInfo = reactive({
     userId: '',
     userName: '',
     roles: [],
+    permissions: [],
     policies: {}
   });
+
+  const isPermissionsLoaded = ref(false);
 
   /** is super role in static route */
   const isStaticSuper = computed(() => {
@@ -45,6 +48,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     clearAuthStorage();
 
     authStore.$reset();
+    isPermissionsLoaded.value = false;
 
     if (!route.meta.constant) {
       await toLogin();
@@ -154,17 +158,26 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
     if (!error) {
       const currentUser = applicationConfiguration.currentUser;
+      const policies = applicationConfiguration.auth?.grantedPolicies || {};
+      const permissions = Object.entries(policies)
+        .filter(([, granted]) => granted)
+        .map(([name]) => name);
 
       // update store
       Object.assign(userInfo, {
         userId: currentUser.id || '',
         userName: currentUser.userName || '',
         roles: currentUser.roles || [],
-        policies: applicationConfiguration.auth?.grantedPolicies || {}
+        permissions,
+        policies
       });
+
+      isPermissionsLoaded.value = true;
 
       return true;
     }
+
+    isPermissionsLoaded.value = true;
 
     return false;
   }
@@ -188,6 +201,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     isStaticSuper,
     isLogin,
     loginLoading,
+    isPermissionsLoaded,
     resetStore,
     login,
     initUserInfo,

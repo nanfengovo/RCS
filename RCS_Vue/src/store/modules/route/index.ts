@@ -12,6 +12,7 @@ import { getRouteName, getRoutePath } from '@/router/elegant/transform';
 import { useAuthStore } from '../auth';
 import { useTabStore } from '../tab';
 import {
+  filterAuthRoutesByPermissions,
   filterAuthRoutesByRoles,
   getBreadcrumbsByRoute,
   getCacheRouteNames,
@@ -177,7 +178,7 @@ export const useRouteStore = defineStore(SetupStoreId.Route, () => {
   /** Init auth route */
   async function initAuthRoute() {
     // check if user info is initialized
-    if (!authStore.userInfo.userId) {
+    if (!authStore.userInfo.userId || !authStore.isPermissionsLoaded) {
       await authStore.initUserInfo();
     }
 
@@ -197,7 +198,8 @@ export const useRouteStore = defineStore(SetupStoreId.Route, () => {
     if (authStore.isStaticSuper) {
       addAuthRoutes(staticAuthRoutes);
     } else {
-      const filteredAuthRoutes = filterAuthRoutesByRoles(staticAuthRoutes, authStore.userInfo.roles);
+      let filteredAuthRoutes = filterAuthRoutesByRoles(staticAuthRoutes, authStore.userInfo.roles);
+      filteredAuthRoutes = filterAuthRoutesByPermissions(filteredAuthRoutes, authStore.userInfo.permissions);
 
       addAuthRoutes(filteredAuthRoutes);
     }
