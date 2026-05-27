@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
-    <PackageReference Include="KubernetesClient" Version="18.0.5"/>
+    <PackageReference Include="KubernetesClient" Version="18.0.5" />
     <PackageReference Include="IdentityModel" Version="7.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
@@ -40,6 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../../modules/wms/src/Wms.Application/Wms.Application.csproj" />
+    <ProjectReference Include="../../modules/wms/src/Wms.HttpApi/Wms.HttpApi.csproj" />
     <ProjectReference Include="..\RCS.Application\RCS.Application.csproj" />
     <ProjectReference Include="..\RCS.HttpApi\RCS.HttpApi.csproj" />
     <ProjectReference Include="..\RCS.EntityFrameworkCore\RCS.EntityFrameworkCore.csproj" />

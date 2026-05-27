@@ -125,5 +125,19 @@ namespace Wms.Locations
             this.LockingTaskId = null;
             LocationStatus = LocationStatus.Occupied;
         }
+
+        /// <summary>
+        /// 改变库位启用状态
+        /// </summary>
+        public void ChangeLocationAble(bool active)
+        {
+            if(!active && LocationStatus != LocationStatus.Empty)
+            {
+                throw new BusinessException(WmsErrorCodes.CannotDisableOccupiedLocation)
+                .WithData("LocationCode", LocationCode)
+                .WithData("currentStatus", LocationStatus);
+            }
+            IsActive = active;
+        }
     }
 }

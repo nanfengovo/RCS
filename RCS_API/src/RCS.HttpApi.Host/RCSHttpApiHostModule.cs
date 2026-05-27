@@ -33,6 +33,7 @@ using Volo.Abp.OpenIddict;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Security.Claims;
+using Wms;
 
 namespace RCS;
 
@@ -46,7 +47,9 @@ namespace RCS;
     typeof(RCSEntityFrameworkCoreModule),
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpAspNetCoreSerilogModule)
+    typeof(AbpAspNetCoreSerilogModule),
+    typeof(WmsHttpApiModule),
+    typeof(WmsApplicationModule)
     )]
 public class RCSHttpApiHostModule : AbpModule
 {
@@ -200,6 +203,12 @@ public class RCSHttpApiHostModule : AbpModule
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
             options.ConventionalControllers.Create(typeof(RCSApplicationModule).Assembly);
+            // 扫描 WMS 模块，并指定特定的路由前缀
+            options.ConventionalControllers.Create(typeof(WmsApplicationModule).Assembly, opts =>
+            {
+                opts.RootPath = "wms"; // 这会让 WMS 下的所有 AppService 路由自动加上 /api/wms/ 前缀
+                opts.RemoteServiceName = "wms";
+            });
         });
     }
 
@@ -212,13 +221,46 @@ public class RCSHttpApiHostModule : AbpModule
             null,
             options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "RCS API", Version = "v1" });
-                options.DocInclusionPredicate((docName, description) => true);
-                // 👇 核心修复代码：强行拦截并正则替换不合法字符
+                // ==========================================
+                // 1. 以后加新模块，只需要在这个数组里加名字！
+                // ==========================================
+                var customModules = new[] { "wms", "dispatch", "device" }; 
+
+                // 注册主文档
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "RCS Main API", Version = "v1" });
+                
+                // 循环注册所有子模块文档
+                foreach (var module in customModules)
+                {
+                    options.SwaggerDoc(module, new OpenApiInfo { Title = $"{module.ToUpper()} Module API", Version = "v1" });
+                }
+
+                // ==========================================
+                // 2. 核心过滤逻辑
+                // ==========================================
+                options.DocInclusionPredicate((docName, description) =>
+                {
+                    // 判断当前接口是否被显式打上了某个模块的标签，或者路由里包含了 /api/模块名/
+                    var matchedModule = customModules.FirstOrDefault(m => 
+                        description.GroupName == m || 
+                        (description.RelativePath != null && description.RelativePath.Contains($"api/{m}")));
+
+                    if (docName == "v1")
+                    {
+                        // 如果生成 v1 (Main API)，只收【不属于任何自定义模块】的基础接口
+                        return matchedModule == null; 
+                    }
+                    else
+                    {
+                        // 如果生成子模块文档，只收对应模块的接口
+                        return matchedModule == docName; 
+                    }
+                });
+
+                // 3. SchemaID 修复
                 options.CustomSchemaIds(type =>
                 {
                     var name = type.FullName ?? type.Name;
-                    // 用下划线替换掉所有不符合 OpenAPI 规范的字符（如反引号、中括号、逗号、空格）
                     return System.Text.RegularExpressions.Regex.Replace(name, @"[^a-zA-Z0-9\.\-_]", "_");
                 });
             });
@@ -291,8 +333,11 @@ public class RCSHttpApiHostModule : AbpModule
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "RCS API");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "RCS Main API");
+            options.SwaggerEndpoint("/swagger/wms/swagger.json", "WMS Module API");
 
+            // 如果你有多个分组，这一行是 UI 渲染下拉框的关键
+            options.DisplayRequestDuration();
             var configuration = context.ServiceProvider.GetRequiredService<IConfiguration>();
             options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
         });
