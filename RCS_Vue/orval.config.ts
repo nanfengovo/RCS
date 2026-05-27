@@ -3,7 +3,7 @@ import { defineConfig } from 'orval';
 export default defineConfig({
   rcsApi: {
     input: {
-      target: 'https://localhost:44367/swagger/v1/swagger.json',
+      target: 'https://localhost:9000/swagger/v1/swagger.json',
       filters: {
         tags: [/Wms/, /Dispatch/, /Device/, /Diagnostics/]
       }

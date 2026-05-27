@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44367",
-      "sslPort": 44367
+      "applicationUrl": "https://localhost:9000",
+      "sslPort": 9000
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "RCS.HttpApi.Host": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44367",
+      "applicationUrl": "https://localhost:9000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

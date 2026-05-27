@@ -2,7 +2,7 @@
   "applications": {
     "RCS.HttpApi.Host": {
       "type": "dotnet-project",
-      "launchUrl": "https://localhost:44367",
+      "launchUrl": "https://localhost:9000",
       "path": "../../../src/RCS.HttpApi.Host/RCS.HttpApi.Host.csproj",
       "kubernetesService": ".*-httpapihost$",
       "healthCheckEndpoint": "/health-status",
@@ -13,7 +13,7 @@
     }
   },
   "containers": {
-    "serviceName": "RCS-Containers",
+    "serviceName": "RCS-Containers"
   },
   "tasks":{
     "Initialize Solution":{

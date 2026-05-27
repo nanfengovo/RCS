@@ -52,6 +52,7 @@ public class OpenIddictDataSeedContributor : OpenIddictDataSeedContributorBase, 
             OpenIddictConstants.Permissions.Scopes.Phone,
             OpenIddictConstants.Permissions.Scopes.Profile,
             OpenIddictConstants.Permissions.Scopes.Roles,
+            OpenIddictConstants.Permissions.Prefixes.Scope + OpenIddictConstants.Scopes.OfflineAccess,
             "RCS"
         };
 
