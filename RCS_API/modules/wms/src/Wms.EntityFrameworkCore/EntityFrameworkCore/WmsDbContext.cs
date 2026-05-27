@@ -12,7 +12,7 @@ public class WmsDbContext : AbpDbContext<WmsDbContext>, IWmsDbContext
      * public DbSet<Question> Questions { get; set; }
      */
 
-     public DbSet<Location> Locations { get; set; }
+    public DbSet<Location> Locations { get; set; }
 
     public WmsDbContext(DbContextOptions<WmsDbContext> options)
         : base(options)

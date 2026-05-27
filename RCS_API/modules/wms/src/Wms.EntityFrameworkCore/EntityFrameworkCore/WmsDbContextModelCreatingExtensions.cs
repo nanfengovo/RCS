@@ -22,14 +22,14 @@ public static class WmsDbContextModelCreatingExtensions
             b.Property(x => x.AssociatedDeviceCode).HasMaxLength(128);
 
             //将值对象(LocationCoordinate)展开拍平成数据库列
-            b.OwnsOne(x => x.LocationCoordinate,c =>
+            b.OwnsOne(x => x.LocationCoordinate, c =>
             {
                 c.Property(p => p.Row).HasColumnName("Row");
                 c.Property(p => p.Column).HasColumnName("Column");
                 c.Property(p => p.Layer).HasColumnName("Layer");
             });
         });
-        
+
         /* Configure all entities here. Example:
 
         builder.Entity<Question>(b =>

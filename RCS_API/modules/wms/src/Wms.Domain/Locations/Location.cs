@@ -9,42 +9,42 @@ namespace Wms.Locations
         /// <summary>
         /// 库位编码，全局唯一
         /// </summary>
-        public string LocationCode { get; private set;} = default!;
+        public string LocationCode { get; private set; } = default!;
 
         /// <summary>
         /// 库位类型
         /// </summary>
-        public LocationType LocationType { get; private set;}
+        public LocationType LocationType { get; private set; }
 
         /// <summary>
         /// 所属库区 （跨聚合使用）
         /// </summary>
-        public Guid ZoneId { get; private set;}
+        public Guid ZoneId { get; private set; }
 
         /// <summary>
         /// 库位坐标 (行、列、层)
         /// </summary>
-        public LocationCoordinate LocationCoordinate { get; private set;}   
+        public LocationCoordinate LocationCoordinate { get; private set; }
 
         /// <summary>
         /// 库位逻辑状态
         /// </summary>
-        public LocationStatus LocationStatus { get; private set;}
+        public LocationStatus LocationStatus { get; private set; }
 
         /// <summary>
         /// 库位物理状态
         /// </summary>
-        public PhysicalSensorStatus? PhysicalSensorStatus { get; private set;}
+        public PhysicalSensorStatus? PhysicalSensorStatus { get; private set; }
 
         /// <summary>
         /// 绑定的底层设备暗号 (用于和 Device 模块做事件驱动联动)
         /// </summary>
-        public string? AssociatedDeviceCode { get; private set;}
+        public string? AssociatedDeviceCode { get; private set; }
 
         /// <summary>
         /// 绑定的载体 ID
         /// </summary>
-        public Guid? CarrierId { get; private set;}
+        public Guid? CarrierId { get; private set; }
 
         /// <summary>
         /// 当前锁定该库位的任务 ID
@@ -100,11 +100,11 @@ namespace Wms.Locations
         public void LockForInbound(Guid taskId)
         {
             this.LockingTaskId = taskId;
-            if(LocationStatus != LocationStatus.Empty || !IsActive)
+            if (LocationStatus != LocationStatus.Empty || !IsActive)
             {
                 throw new BusinessException(WmsErrorCodes.LocationNotAvailableForInbound)
                 .WithData("LocationCode", LocationCode)
-                .WithData("currentStatus",LocationStatus);
+                .WithData("currentStatus", LocationStatus);
             }
 
             LocationStatus = LocationStatus.InboundLocked;
@@ -116,11 +116,11 @@ namespace Wms.Locations
         /// <param name="carrierId"></param>
         public void CompleteInbound(Guid carrierId)
         {
-            if(LocationStatus != LocationStatus.InboundLocked)
+            if (LocationStatus != LocationStatus.InboundLocked)
             {
                 throw new BusinessException(WmsErrorCodes.LocationNotInboundLockedState)
                 .WithData("LocationCode", LocationCode)
-                .WithData("currentStatus",LocationStatus);
+                .WithData("currentStatus", LocationStatus);
             }
             this.CarrierId = carrierId;
             LocationStatus = LocationStatus.Occupied;

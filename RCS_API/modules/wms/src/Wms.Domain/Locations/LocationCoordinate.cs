@@ -23,9 +23,9 @@ namespace Wms.Locations
 
         public LocationCoordinate(int row, int column, int layer)
         {
-            if(row <0 || column < 0 || layer < 0)
+            if (row < 0 || column < 0 || layer < 0)
             {
-                
+
                 throw new ArgumentException("行、列、层坐标必须为非负整数");
             }
             Row = row;
