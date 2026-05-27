@@ -7,9 +7,6 @@ namespace Diagnostics.EntityFrameworkCore;
 [ConnectionStringName(DiagnosticsDbProperties.ConnectionStringName)]
 public class DiagnosticsDbContext : AbpDbContext<DiagnosticsDbContext>, IDiagnosticsDbContext
 {
-    /* Add DbSet for each Aggregate Root here. Example:
-     * public DbSet<Question> Questions { get; set; }
-     */
 
     public DiagnosticsDbContext(DbContextOptions<DiagnosticsDbContext> options)
         : base(options)

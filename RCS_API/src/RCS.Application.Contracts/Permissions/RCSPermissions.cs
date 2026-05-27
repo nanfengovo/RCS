@@ -12,7 +12,4 @@ public static class RCSPermissions
         public const string Edit = Default + ".Edit";
         public const string Delete = Default + ".Delete";
     }
-
-    //Add your own permission names. Example:
-    //public const string MyPermission1 = GroupName + ".MyPermission1";
 }

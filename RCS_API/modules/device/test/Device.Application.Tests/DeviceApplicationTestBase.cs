@@ -2,9 +2,7 @@
 
 namespace Device;
 
-/* Inherit from this class for your application layer tests.
- * See SampleAppService_Tests for example.
- */
+/* Inherit from this class for your application layer tests. */
 public abstract class DeviceApplicationTestBase<TStartupModule> : DeviceTestBase<TStartupModule>
     where TStartupModule : IAbpModule
 {

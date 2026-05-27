@@ -15,10 +15,6 @@ public class DiagnosticsEntityFrameworkCoreModule : AbpModule
         context.Services.AddAbpDbContext<DiagnosticsDbContext>(options =>
         {
             options.AddDefaultRepositories<IDiagnosticsDbContext>(includeAllEntities: true);
-
-            /* Add custom repositories here. Example:
-            * options.AddRepository<Question, EfCoreQuestionRepository>();
-            */
         });
     }
 }

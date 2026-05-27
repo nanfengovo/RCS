@@ -15,10 +15,6 @@ public class DeviceEntityFrameworkCoreModule : AbpModule
         context.Services.AddAbpDbContext<DeviceDbContext>(options =>
         {
             options.AddDefaultRepositories<IDeviceDbContext>(includeAllEntities: true);
-
-            /* Add custom repositories here. Example:
-            * options.AddRepository<Question, EfCoreQuestionRepository>();
-            */
         });
     }
 }

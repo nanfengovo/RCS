@@ -1,7 +1,6 @@
 {
   "culture": "tr",
   "texts": {
-    "MyAccount":  "Hesabım",
-    "SamplePageMessage": "Dispatch modulünden örnek bir sayfa"
+    "MyAccount": "Hesabım"
   }
 }

@@ -1,7 +1,6 @@
 {
   "culture": "en",
   "texts": {
-    "MyAccount":  "My account",
-    "SamplePageMessage": "A sample page for the Wms module"
+    "MyAccount": "My account"
   }
 }

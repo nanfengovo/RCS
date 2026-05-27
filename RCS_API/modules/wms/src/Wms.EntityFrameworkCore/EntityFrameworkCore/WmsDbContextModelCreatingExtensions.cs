@@ -29,25 +29,5 @@ public static class WmsDbContextModelCreatingExtensions
                 c.Property(p => p.Layer).HasColumnName("Layer");
             });
         });
-
-        /* Configure all entities here. Example:
-
-        builder.Entity<Question>(b =>
-        {
-            //Configure table & schema name
-            b.ToTable(WmsDbProperties.DbTablePrefix + "Questions", WmsDbProperties.DbSchema);
-
-            b.ConfigureByConvention();
-
-            //Properties
-            b.Property(q => q.Title).IsRequired().HasMaxLength(QuestionConsts.MaxTitleLength);
-
-            //Relations
-            b.HasMany(question => question.Tags).WithOne().HasForeignKey(qt => qt.QuestionId);
-
-            //Indexes
-            b.HasIndex(q => q.CreationTime);
-        });
-        */
     }
 }

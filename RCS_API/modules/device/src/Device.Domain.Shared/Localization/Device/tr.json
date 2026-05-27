@@ -1,7 +1,6 @@
 {
   "culture": "tr",
   "texts": {
-    "MyAccount":  "Hesabım",
-    "SamplePageMessage": "Device modulünden örnek bir sayfa"
+    "MyAccount": "Hesabım"
   }
 }

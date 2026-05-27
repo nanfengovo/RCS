@@ -2,7 +2,6 @@
   "culture": "zh-Hans",
   "texts": {
     "MyAccount": "我的账户",
-    "SamplePageMessage": "Wms 模块的示例页面",
     "Wms:EmptyLocationIdList": "未提供任何库位ID。",
     "Wms:LocationsNotFound": "未找到指定的库位信息。",
     "Wms:SomeLocationsNotFound": "部分指定的库位不存在，操作已取消。",
