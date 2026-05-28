@@ -4,7 +4,10 @@
     <Version>1.0.0</Version>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <NuGetAudit>false</NuGetAudit>
-	<AbpProjectType>app</AbpProjectType>
+    <AbpProjectType>app</AbpProjectType>
+    <!-- 启用 XML 文档生成 -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <Target Name="NoWarnOnRazorViewImportedTypeConflicts" BeforeTargets="RazorCoreCompile">

@@ -5,6 +5,7 @@
         <NoWarn>$(NoWarn);CS1591</NoWarn>
         <NuGetAudit>false</NuGetAudit>
         <AbpProjectType>module</AbpProjectType>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>

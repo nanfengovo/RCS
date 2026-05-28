@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -236,7 +238,45 @@ public class RCSHttpApiHostModule : AbpModule
                 }
 
                 // ==========================================
-                // 2. 核心过滤逻辑
+                // 2. 加载 XML 文档注释
+                // ==========================================
+                var xmlComments = new List<string>();
+                
+                // 主项目 XML 文件
+                var mainAssemblies = new[]
+                {
+                    typeof(RCSApplicationModule).Assembly,
+                    typeof(RCSHttpApiModule).Assembly
+                };
+                
+                // 模块 XML 文件
+                var moduleAssemblies = new[]
+                {
+                    typeof(WmsApplicationModule).Assembly,
+                    typeof(WmsHttpApiModule).Assembly
+                };
+                
+                // 合并所有需要加载 XML 的程序集
+                var allAssemblies = mainAssemblies.Concat(moduleAssemblies);
+                
+                foreach (var assembly in allAssemblies)
+                {
+                    var xmlFile = $"{assembly.GetName().Name}.xml";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                    if (File.Exists(xmlPath))
+                    {
+                        xmlComments.Add(xmlPath);
+                    }
+                }
+                
+                // 为所有 XML 文件添加 Swagger 集成
+                foreach (var xmlComment in xmlComments)
+                {
+                    options.IncludeXmlComments(xmlComment, includeControllerXmlComments: true);
+                }
+
+                // ==========================================
+                // 3. 核心过滤逻辑
                 // ==========================================
                 options.DocInclusionPredicate((docName, description) =>
                 {
@@ -257,7 +297,7 @@ public class RCSHttpApiHostModule : AbpModule
                     }
                 });
 
-                // 3. SchemaID 修复
+                // 4. SchemaID 修复
                 options.CustomSchemaIds(type =>
                 {
                     var name = type.FullName ?? type.Name;
