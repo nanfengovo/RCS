@@ -22,7 +22,7 @@ namespace Wms.Locations.Handlers
         {
             // 1. 记文本日志 (Serilog 会把它写进控制台和 txt 文件)
             _logger.LogInformation(
-                "【WMS业务日志】库位 {LocationId} 已被任务 {TaskId} 锁定。时间: {Time}", 
+                "【WMS业务日志】库位 {LocationId} 已被任务 {TaskId} 锁定。时间: {Time}",
                 eventData.LocationId, eventData.TaskId, eventData.OccurredTime);
 
             // 2. 记数据库审计日志 (写进你刚才截图的 AbpAuditLogActions 表里)
@@ -37,7 +37,7 @@ namespace Wms.Locations.Handlers
                     ExecutionDuration = 0
                 });
             }
-            
+
             await Task.CompletedTask;
         }
     }

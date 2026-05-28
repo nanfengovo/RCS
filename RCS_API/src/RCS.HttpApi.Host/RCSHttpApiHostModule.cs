@@ -241,24 +241,24 @@ public class RCSHttpApiHostModule : AbpModule
                 // 2. 加载 XML 文档注释
                 // ==========================================
                 var xmlComments = new List<string>();
-                
+
                 // 主项目 XML 文件
                 var mainAssemblies = new[]
                 {
                     typeof(RCSApplicationModule).Assembly,
                     typeof(RCSHttpApiModule).Assembly
                 };
-                
+
                 // 模块 XML 文件
                 var moduleAssemblies = new[]
                 {
                     typeof(WmsApplicationModule).Assembly,
                     typeof(WmsHttpApiModule).Assembly
                 };
-                
+
                 // 合并所有需要加载 XML 的程序集
                 var allAssemblies = mainAssemblies.Concat(moduleAssemblies);
-                
+
                 foreach (var assembly in allAssemblies)
                 {
                     var xmlFile = $"{assembly.GetName().Name}.xml";
@@ -268,7 +268,7 @@ public class RCSHttpApiHostModule : AbpModule
                         xmlComments.Add(xmlPath);
                     }
                 }
-                
+
                 // 为所有 XML 文件添加 Swagger 集成
                 foreach (var xmlComment in xmlComments)
                 {
