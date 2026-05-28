@@ -555,6 +555,29 @@ declare namespace App {
           };
           creativity: string;
         };
+        overallauth: {
+          user: {
+            title: string;
+            userName: string;
+            name: string;
+            email: string;
+            roleNames: string;
+            status: string;
+            creationTime: string;
+            statusEnabled: string;
+            statusDisabled: string;
+          };
+          role: {
+            title: string;
+            roleName: string;
+            permissions: string;
+            isDefault: string;
+            isPublic: string;
+            isStatic: string;
+            yes: string;
+            no: string;
+          };
+        };
       };
       form: {
         required: string;

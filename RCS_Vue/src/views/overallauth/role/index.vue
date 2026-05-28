@@ -106,13 +106,13 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
     },
     {
       key: 'name',
-      title: '角色名称',
+      title: $t('page.overallauth.role.roleName'),
       align: 'center',
       minWidth: 140
     },
     {
       key: 'permissions',
-      title: '拥有权限',
+      title: $t('page.overallauth.role.permissions'),
       align: 'center',
       minWidth: 320,
       render: row => {
@@ -133,24 +133,24 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
     },
     {
       key: 'isDefault',
-      title: '默认角色',
+      title: $t('page.overallauth.role.isDefault'),
       align: 'center',
       width: 100,
-      render: row => <NTag type={row.isDefault ? 'success' : 'default'}>{row.isDefault ? '是' : '否'}</NTag>
+      render: row => <NTag type={row.isDefault ? 'success' : 'default'}>{row.isDefault ? $t('page.overallauth.role.yes') : $t('page.overallauth.role.no')}</NTag>
     },
     {
       key: 'isPublic',
-      title: '公开角色',
+      title: $t('page.overallauth.role.isPublic'),
       align: 'center',
       width: 100,
-      render: row => <NTag type={row.isPublic ? 'info' : 'default'}>{row.isPublic ? '是' : '否'}</NTag>
+      render: row => <NTag type={row.isPublic ? 'info' : 'default'}>{row.isPublic ? $t('page.overallauth.role.yes') : $t('page.overallauth.role.no')}</NTag>
     },
     {
       key: 'isStatic',
-      title: '系统角色',
+      title: $t('page.overallauth.role.isStatic'),
       align: 'center',
       width: 100,
-      render: row => <NTag type={row.isStatic ? 'warning' : 'default'}>{row.isStatic ? '是' : '否'}</NTag>
+      render: row => <NTag type={row.isStatic ? 'warning' : 'default'}>{row.isStatic ? $t('page.overallauth.role.yes') : $t('page.overallauth.role.no')}</NTag>
     },
     {
       key: 'operate',
@@ -209,7 +209,7 @@ function edit(id: string) {
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
     <RoleSearch v-model:model="searchParams" @search="getDataByPage" />
-    <NCard title="角色管理" :bordered="false" size="small" class="card-wrapper sm:flex-1-hidden">
+    <NCard :title="$t('page.overallauth.role.title')" :bordered="false" size="small" class="card-wrapper sm:flex-1-hidden">
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"

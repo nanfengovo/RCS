@@ -21,8 +21,8 @@ const appStore = useAppStore();
 const { hasAuth } = useAuth();
 const permissions = rbacPermissions.identity.users;
 const statusRecord: Record<Api.Common.EnableStatus, string> = {
-  '1': '启用',
-  '2': '禁用'
+  '1': $t('page.overallauth.user.statusEnabled'),
+  '2': $t('page.overallauth.user.statusDisabled')
 };
 
 const searchParams: Api.Rbac.UserSearchParams = reactive({
@@ -100,26 +100,26 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
     },
     {
       key: 'userName',
-      title: '用户名',
+      title: $t('page.overallauth.user.userName'),
       align: 'center',
       minWidth: 140
     },
     {
       key: 'name',
-      title: '姓名',
+      title: $t('page.overallauth.user.name'),
       align: 'center',
       minWidth: 120,
       render: row => row.name || '-'
     },
     {
       key: 'email',
-      title: '邮箱',
+      title: $t('page.overallauth.user.email'),
       align: 'center',
       minWidth: 180
     },
     {
       key: 'roleNames',
-      title: '拥有角色',
+      title: $t('page.overallauth.user.roleNames'),
       align: 'center',
       minWidth: 180,
       render: row => {
@@ -139,7 +139,7 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
     },
     {
       key: 'isActive',
-      title: '状态',
+      title: $t('page.overallauth.user.status'),
       align: 'center',
       width: 100,
       render: row => {
@@ -154,7 +154,7 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
     },
     {
       key: 'creationTime',
-      title: '创建时间',
+      title: $t('page.overallauth.user.creationTime'),
       align: 'center',
       width: 180,
       render: row => (row.creationTime ? new Date(row.creationTime).toLocaleString('zh-CN') : '-')
@@ -216,7 +216,7 @@ function edit(id: string) {
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
     <UserSearch v-model:model="searchParams" @search="getDataByPage" />
-    <NCard title="用户管理" :bordered="false" size="small" class="card-wrapper sm:flex-1-hidden">
+    <NCard :title="$t('page.overallauth.user.title')" :bordered="false" size="small" class="card-wrapper sm:flex-1-hidden">
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"

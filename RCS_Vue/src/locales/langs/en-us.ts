@@ -309,6 +309,29 @@ const local: App.I18n.Schema = {
         desc5: 'Soybean just wrote some of the workbench pages casually, and it was enough to see!'
       },
       creativity: 'Creativity'
+    },
+    overallauth: {
+      user: {
+        title: 'User Management',
+        userName: 'Username',
+        name: 'Name',
+        email: 'Email',
+        roleNames: 'Assigned Roles',
+        status: 'Status',
+        creationTime: 'Created At',
+        statusEnabled: 'Enabled',
+        statusDisabled: 'Disabled'
+      },
+      role: {
+        title: 'Role Management',
+        roleName: 'Role Name',
+        permissions: 'Permissions',
+        isDefault: 'Default Role',
+        isPublic: 'Public Role',
+        isStatic: 'System Role',
+        yes: 'Yes',
+        no: 'No'
+      }
     }
   },
   form: {

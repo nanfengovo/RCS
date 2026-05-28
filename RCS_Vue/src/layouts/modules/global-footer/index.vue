@@ -6,7 +6,7 @@ defineOptions({
 
 <template>
   <DarkModeContainer class="h-full flex-center">
-    <a  target="_blank" rel="noopener noreferrer">
+    <a target="_blank" rel="noopener noreferrer">
       Copyright MIT © 2026 RCS
     </a>
   </DarkModeContainer>

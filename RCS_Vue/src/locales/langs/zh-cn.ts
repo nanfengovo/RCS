@@ -305,6 +305,29 @@ const local: App.I18n.Schema = {
         desc5: 'Soybean 刚才把工作台页面随便写了一些，凑合能看了！'
       },
       creativity: '创意'
+    },
+    overallauth: {
+      user: {
+        title: '用户管理',
+        userName: '用户名',
+        name: '姓名',
+        email: '邮箱',
+        roleNames: '拥有角色',
+        status: '状态',
+        creationTime: '创建时间',
+        statusEnabled: '启用',
+        statusDisabled: '禁用'
+      },
+      role: {
+        title: '角色管理',
+        roleName: '角色名称',
+        permissions: '拥有权限',
+        isDefault: '默认角色',
+        isPublic: '公开角色',
+        isStatic: '系统角色',
+        yes: '是',
+        no: '否'
+      }
     }
   },
   form: {
